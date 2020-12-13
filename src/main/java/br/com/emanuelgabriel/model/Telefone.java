@@ -7,6 +7,7 @@ public class Telefone {
 	private Long codigo;
 	private String numero;
 	private Tipo tipo;
+	private Long codigoUsuario;
 
 	public Telefone() {
 	}
@@ -41,6 +42,14 @@ public class Telefone {
 		this.tipo = tipo;
 	}
 
+	public Long getCodigoUsuario() {
+		return codigoUsuario;
+	}
+
+	public void setCodigoUsuario(Long codigoUsuario) {
+		this.codigoUsuario = codigoUsuario;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -68,7 +77,8 @@ public class Telefone {
 
 	@Override
 	public String toString() {
-		return "Telefone [codigo=" + codigo + ", numero=" + numero + ", tipo=" + tipo + "]";
+		return "Telefone [codigo=" + codigo + ", numero=" + numero + ", tipo=" + tipo + ", codigoUsuario="
+				+ codigoUsuario + "]";
 	}
 
 }

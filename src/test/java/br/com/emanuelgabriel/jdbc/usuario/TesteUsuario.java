@@ -51,12 +51,13 @@ public class TesteUsuario {
 	@Test
 	public void buscarPorCodigo() {
 
-		Usuario usuario = this.usuarioRepository.findByCodigo(4L);
-		if (usuario != null) {
-			System.out.println(usuario);
+		Usuario usuario = this.usuarioRepository.findByCodigo(6L);
+
+		if (usuario == null) {
+			throw new RegraNegocioException(USUARIO_NAO_ENCONTRADO);
 		}
 
-		throw new RegraNegocioException(USUARIO_NAO_ENCONTRADO);
+		System.out.println(usuario);
 
 	}
 
@@ -65,10 +66,9 @@ public class TesteUsuario {
 
 		Usuario usuario = this.usuarioRepository.findByCodigo(6L);
 
-		// usuario.setNome("Carlito Tadeu Monteiro");
-		usuario.setLogin("jonas2020");
-		usuario.setSenha("10203040");
-		// usuario.setCpf("04067845633");
+		usuario.setNome("José Reis Duarte Lima");
+		usuario.setLogin("josereis2020");
+		usuario.setSenha("100200");
 
 		this.usuarioRepository.update(usuario);
 		System.out.println("Usuário '" + usuario.getNome() + "' atualizado com sucesso!");

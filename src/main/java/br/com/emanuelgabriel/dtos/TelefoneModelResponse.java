@@ -1,16 +1,16 @@
 package br.com.emanuelgabriel.dtos;
 
-public class TelefoneDtoResponse {
+public class TelefoneModelResponse {
 
 	private String nome;
 	private String cpf;
 	private String numero;
 	private String tipo;
 
-	public TelefoneDtoResponse() {
+	public TelefoneModelResponse() {
 	}
 
-	public TelefoneDtoResponse(String nome, String cpf, String numero, String tipo) {
+	public TelefoneModelResponse(String nome, String cpf, String numero, String tipo) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.numero = numero;

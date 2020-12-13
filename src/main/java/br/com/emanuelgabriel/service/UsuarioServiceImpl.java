@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import br.com.emanuelgabriel.dtos.TelefoneDtoResponse;
+import br.com.emanuelgabriel.dtos.TelefoneModelResponse;
 import br.com.emanuelgabriel.model.Usuario;
 import br.com.emanuelgabriel.persistencia.jdbc.SingleConnectionJDBC;
 import br.com.emanuelgabriel.repository.UsuarioRepository;
@@ -84,7 +84,7 @@ public class UsuarioServiceImpl implements UsuarioRepository {
 	@Override
 	public Usuario update(Usuario usuario) {
 
-		String sql = "UPDATE usuario SET nome=?, login=?, senha=?, cpf=? WHERE codigo = " + usuario.getCodigo();
+		String sql = "UPDATE usuario SET nome=?, login=?, senha=? WHERE codigo = " + usuario.getCodigo();
 
 		try {
 
@@ -92,7 +92,6 @@ public class UsuarioServiceImpl implements UsuarioRepository {
 			preparador.setString(1, usuario.getNome());
 			preparador.setString(2, usuario.getLogin());
 			preparador.setString(3, usuario.getSenha());
-			preparador.setString(4, usuario.getCpf());
 
 			preparador.execute();
 			// fechando a conexão
@@ -149,9 +148,10 @@ public class UsuarioServiceImpl implements UsuarioRepository {
 
 	}
 
-	public List<TelefoneDtoResponse> buscarTelefones(Long codigoUsuario) {
+	@Override
+	public List<TelefoneModelResponse> buscarTelefones(Long codigoUsuario) {
 
-		List<TelefoneDtoResponse> telefones = new ArrayList<>();
+		List<TelefoneModelResponse> telefones = new ArrayList<>();
 
 		String sql = "SELECT nome, cpf, numero, tipo FROM telefone tel INNER JOIN usuario u ON tel.usuario_codigo = u.codigo WHERE u.codigo = "
 				+ codigoUsuario;
@@ -161,7 +161,7 @@ public class UsuarioServiceImpl implements UsuarioRepository {
 			PreparedStatement preparador = this.conexao.prepareStatement(sql);
 			ResultSet resultado = preparador.executeQuery();
 			while (resultado.next()) {
-				TelefoneDtoResponse telefone = new TelefoneDtoResponse();
+				TelefoneModelResponse telefone = new TelefoneModelResponse();
 				telefone.setNome(resultado.getString("nome"));
 				telefone.setCpf(resultado.getString("cpf"));
 				telefone.setNumero(resultado.getString("numero"));
