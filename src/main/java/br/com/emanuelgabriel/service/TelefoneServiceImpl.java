@@ -76,7 +76,25 @@ public class TelefoneServiceImpl implements TelefoneRepository {
 
 	@Override
 	public Telefone update(Telefone telefone) {
-		return null;
+
+		String sql = "UPDATE telefone SET numero=?, tipo=? WHERE codigo = " + telefone.getCodigo();
+
+		try {
+
+			PreparedStatement preparador = this.conexao.prepareStatement(sql);
+			preparador.setString(1, telefone.getNumero());
+			preparador.setString(2, telefone.getTipo().toString());
+
+			preparador.executeUpdate();
+
+			// fechando a conexão
+			preparador.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return telefone;
 	}
 
 	@Override
@@ -119,6 +137,7 @@ public class TelefoneServiceImpl implements TelefoneRepository {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

@@ -78,14 +78,13 @@ public class TesteUsuario {
 	@Test
 	public void remover() {
 
-		Usuario usuario = this.usuarioRepository.findByCodigo(4L);
-		if (usuario != null) {
-			this.usuarioRepository.remover(usuario);
-			System.out.println("Usuário de código '" + usuario.getCodigo() + "' removido com sucesso!");
+		Usuario usuario = this.usuarioRepository.findByCodigo(14L);
+		if (usuario.getCodigo() == null) {
+			throw new RegraNegocioException(USUARIO_NAO_ENCONTRADO);
 		}
 
-		System.out.println(USUARIO_NAO_ENCONTRADO);
-		throw new RegraNegocioException(USUARIO_NAO_ENCONTRADO);
+		this.usuarioRepository.remover(usuario);
+		System.out.println("Usuário de código '" + usuario.getCodigo() + "' removido com sucesso!");
 
 	}
 

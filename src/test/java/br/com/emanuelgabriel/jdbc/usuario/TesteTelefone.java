@@ -31,7 +31,7 @@ public class TesteTelefone {
 	@Test
 	public void buscarTelefonesUsuarios() {
 
-		List<TelefoneModelResponse> telefones = this.usuarioRepository.buscarTelefones(2L);
+		List<TelefoneModelResponse> telefones = this.usuarioRepository.buscarTelefones(1L);
 		if (telefones.isEmpty()) {
 			throw new RegraNegocioException(TELEFONE_USUARIO_NAO_ENCONTRADO);
 		}
@@ -71,6 +71,22 @@ public class TesteTelefone {
 		telefones.forEach(tel -> {
 			System.out.println(tel);
 		});
+
+	}
+
+	@Test
+	public void atualizar() {
+
+		Telefone telefone = this.telefoneRepository.findByCodigo(4L);
+		if (telefone.getCodigo() == null) {
+			throw new RegraNegocioException(NENHUM_REGISTRO_ENCONTRADO);
+		}
+
+		telefone.setNumero("86981663488");
+		telefone.setTipo(Tipo.CELULAR);
+
+		this.telefoneRepository.update(telefone);
+		System.out.println("Número telefone '" + telefone.getNumero() + "' atualizado");
 
 	}
 
