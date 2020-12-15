@@ -52,8 +52,8 @@ public class UsuarioServiceImpl implements UsuarioRepository {
 	@Override
 	public List<Usuario> findAll() {
 
-		String sql = "SELECT * FROM usuario";
 		List<Usuario> usuarios = new ArrayList<>();
+		String sql = "SELECT * FROM usuario";
 
 		try {
 
@@ -185,6 +185,58 @@ public class UsuarioServiceImpl implements UsuarioRepository {
 
 		return telefones;
 
+	}
+
+	@Override
+	public Long buscarMaximoUsuarios() {
+
+		Long codigo = 0L;
+		String sql = "SELECT count(codigo) FROM usuario;";
+
+		try {
+
+			PreparedStatement preparador = this.conexao.prepareStatement(sql);
+			ResultSet resultado = preparador.executeQuery();
+
+			while (resultado.next()) {
+				codigo = resultado.getLong(1);
+			}
+
+			preparador.close();
+
+		} catch (SQLException e) {
+			Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, e);
+			e.printStackTrace();
+		}
+
+		return codigo;
+	}
+
+	@Override
+	public Long quantidadeTelefoneUsuario(Usuario usuario) {
+
+		Long codigo = 0L;
+		String sql = "SELECT count(codigo) FROM telefone as tel WHERE tel.usuario_codigo = ?";
+
+		try {
+
+			PreparedStatement preparador = this.conexao.prepareStatement(sql);
+			preparador.setLong(1, usuario.getCodigo());
+			ResultSet resultado = preparador.executeQuery();
+
+			while (resultado.next()) {
+				codigo = resultado.getLong(1);
+			}
+
+			// fechando a conexão
+			preparador.close();
+
+		} catch (SQLException e) {
+			Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, e);
+			e.printStackTrace();
+		}
+
+		return codigo;
 	}
 
 }

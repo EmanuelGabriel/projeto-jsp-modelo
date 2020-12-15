@@ -32,7 +32,7 @@ public class TesteTelefone {
 	@Test
 	public void buscarTelefonesUsuarios() {
 
-		List<TelefoneModelResponse> telefones = this.usuarioRepository.buscarTelefones(2L);
+		List<TelefoneModelResponse> telefones = this.usuarioRepository.buscarTelefones(3L);
 		if (telefones.isEmpty()) {
 			throw new RegraNegocioException(TELEFONE_USUARIO_NAO_ENCONTRADO);
 		}
@@ -46,7 +46,7 @@ public class TesteTelefone {
 	@Test
 	public void buscarPorNumero() {
 
-		String numero = "85398877112";
+		String numero = "8639556845";
 		Telefone telefone = this.telefoneRepository.buscarPorNumero(numero);
 
 		if (telefone.getNumero() == null) {
@@ -66,8 +66,8 @@ public class TesteTelefone {
 		}
 
 		Telefone telefone = new Telefone();
-		telefone.setNumero("8633781272");
-		telefone.setTipo(Tipo.FIXO);
+		telefone.setNumero("85988672390");
+		telefone.setTipo(Tipo.CELULAR);
 		telefone.setCodigoUsuario(usuario.getCodigo());
 
 		this.telefoneRepository.criar(telefone);

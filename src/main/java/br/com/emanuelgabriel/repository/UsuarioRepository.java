@@ -8,5 +8,10 @@ import br.com.emanuelgabriel.service.GenericService;
 
 public interface UsuarioRepository extends GenericService<Usuario> {
 
+	Long quantidadeTelefoneUsuario(Usuario usuario);
+
+	Long buscarMaximoUsuarios();
+
 	List<TelefoneModelResponse> buscarTelefones(Long codigoUsuario);
+
 }

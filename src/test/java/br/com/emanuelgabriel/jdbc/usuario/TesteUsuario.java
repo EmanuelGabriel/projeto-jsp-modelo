@@ -30,7 +30,7 @@ public class TesteUsuario {
 		usuario.setCpf("01080946588");
 
 		this.usuarioRepository.criar(usuario);
-		System.out.println("Usuário " + usuario.getNome() + " cadastrado com sucesso!");
+		System.out.println("Usuário " + usuario.getNome() + " criado com sucesso!");
 
 	}
 
@@ -53,7 +53,7 @@ public class TesteUsuario {
 
 		Usuario usuario = this.usuarioRepository.findByCodigo(6L);
 
-		if (usuario == null) {
+		if (usuario.getCodigo() == null) {
 			throw new RegraNegocioException(USUARIO_NAO_ENCONTRADO);
 		}
 
@@ -85,6 +85,25 @@ public class TesteUsuario {
 
 		this.usuarioRepository.remover(usuario);
 		System.out.println("Usuário de código '" + usuario.getCodigo() + "' removido com sucesso!");
+
+	}
+
+	@Test
+	public void quantidadeMaximaUsuarios() {
+
+		Long qtd = this.usuarioRepository.buscarMaximoUsuarios();
+		System.out.println("Quantidade de usuários registrados: " + qtd);
+
+	}
+
+	@Test
+	public void quantidadeTelefoneUsuarios() {
+
+		Usuario usuario = this.usuarioRepository.findByCodigo(1L);
+
+		Long qtd = this.usuarioRepository.quantidadeTelefoneUsuario(usuario);
+
+		System.out.println("Quantidade de telefones registrado para o usuário '" + usuario.getNome() + "'\nQuantidade: " + qtd);
 
 	}
 

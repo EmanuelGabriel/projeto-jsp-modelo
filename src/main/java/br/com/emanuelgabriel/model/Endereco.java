@@ -1,7 +1,5 @@
 package br.com.emanuelgabriel.model;
 
-import br.com.emanuelgabriel.model.enums.Tipo;
-
 public class Endereco {
 
 	private Long codigo;
@@ -9,21 +7,19 @@ public class Endereco {
 	private String cep;
 	private String logradouro;
 	private String rua;
-	private Tipo tipo;
 	private String cidade;
 	private String estado;
 
 	public Endereco() {
 	}
 
-	public Endereco(Long codigo, String numero, String cep, String logradouro, String rua, Tipo tipo, String cidade,
+	public Endereco(Long codigo, String numero, String cep, String logradouro, String rua, String cidade,
 			String estado) {
 		this.codigo = codigo;
 		this.numero = numero;
 		this.cep = cep;
 		this.logradouro = logradouro;
 		this.rua = rua;
-		this.tipo = tipo;
 		this.cidade = cidade;
 		this.estado = estado;
 	}
@@ -66,14 +62,6 @@ public class Endereco {
 
 	public void setRua(String rua) {
 		this.rua = rua;
-	}
-
-	public Tipo getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(Tipo tipo) {
-		this.tipo = tipo;
 	}
 
 	public String getCidade() {
@@ -120,7 +108,7 @@ public class Endereco {
 	@Override
 	public String toString() {
 		return "Endereco [codigo=" + codigo + ", numero=" + numero + ", cep=" + cep + ", logradouro=" + logradouro
-				+ ", rua=" + rua + ", tipo=" + tipo + ", cidade=" + cidade + ", estado=" + estado + "]";
+				+ ", rua=" + rua + ", cidade=" + cidade + ", estado=" + estado + "]";
 	}
 
 }

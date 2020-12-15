@@ -14,6 +14,7 @@ public class Usuario implements Serializable {
 	private String senha;
 	private String cpf;
 	private List<Telefone> telefones = new ArrayList<>();
+	private List<Endereco> enderecos = new ArrayList<>();
 
 	public Usuario() {
 	}
@@ -73,6 +74,14 @@ public class Usuario implements Serializable {
 		this.telefones = telefones;
 	}
 
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
+
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -101,7 +110,7 @@ public class Usuario implements Serializable {
 	@Override
 	public String toString() {
 		return "Usuario [codigo=" + codigo + ", nome=" + nome + ", login=" + login + ", senha=" + senha + ", cpf=" + cpf
-				+ ", telefones=" + telefones + "]";
+				+ ", telefones=" + telefones + ", enderecos=" + enderecos + "]";
 	}
 
 }
