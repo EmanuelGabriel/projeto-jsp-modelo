@@ -91,7 +91,7 @@ public class TesteUsuario {
 	@Test
 	public void quantidadeMaximaUsuarios() {
 
-		Long qtd = this.usuarioRepository.buscarMaximoUsuarios();
+		Long qtd = this.usuarioRepository.quantidadeMaximaUsuarios();
 		System.out.println("Quantidade de usuários registrados: " + qtd);
 
 	}
@@ -99,11 +99,11 @@ public class TesteUsuario {
 	@Test
 	public void quantidadeTelefoneUsuarios() {
 
-		Usuario usuario = this.usuarioRepository.findByCodigo(1L);
+		Usuario usuario = this.usuarioRepository.findByCodigo(2L);
 
 		Long qtd = this.usuarioRepository.quantidadeTelefoneUsuario(usuario);
 
-		System.out.println("Quantidade de telefones registrado para o usuário '" + usuario.getNome() + "'\nQuantidade: " + qtd);
+		System.out.println("Usuário '" + usuario.getNome() + "' possui '" + qtd + "' telefones cadastrados");
 
 	}
 

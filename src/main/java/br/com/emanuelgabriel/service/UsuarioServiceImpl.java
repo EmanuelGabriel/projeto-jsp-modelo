@@ -188,7 +188,7 @@ public class UsuarioServiceImpl implements UsuarioRepository {
 	}
 
 	@Override
-	public Long buscarMaximoUsuarios() {
+	public Long quantidadeMaximaUsuarios() {
 
 		Long codigo = 0L;
 		String sql = "SELECT count(codigo) FROM usuario;";

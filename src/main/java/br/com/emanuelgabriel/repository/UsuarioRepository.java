@@ -10,7 +10,7 @@ public interface UsuarioRepository extends GenericService<Usuario> {
 
 	Long quantidadeTelefoneUsuario(Usuario usuario);
 
-	Long buscarMaximoUsuarios();
+	Long quantidadeMaximaUsuarios();
 
 	List<TelefoneModelResponse> buscarTelefones(Long codigoUsuario);
 
