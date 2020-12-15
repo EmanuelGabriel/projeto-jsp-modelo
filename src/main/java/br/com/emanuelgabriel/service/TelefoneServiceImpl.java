@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import br.com.emanuelgabriel.model.Telefone;
 import br.com.emanuelgabriel.model.enums.Tipo;
@@ -39,6 +41,7 @@ public class TelefoneServiceImpl implements TelefoneRepository {
 			preparador.close();
 
 		} catch (Exception e) {
+			Logger.getLogger(TelefoneServiceImpl.class.getName()).log(Level.SEVERE, null, e);
 			e.printStackTrace();
 		}
 
@@ -68,6 +71,7 @@ public class TelefoneServiceImpl implements TelefoneRepository {
 			preparador.close();
 
 		} catch (SQLException e) {
+			Logger.getLogger(TelefoneServiceImpl.class.getName()).log(Level.SEVERE, null, e);
 			e.printStackTrace();
 
 		}
@@ -91,6 +95,7 @@ public class TelefoneServiceImpl implements TelefoneRepository {
 			preparador.close();
 
 		} catch (SQLException e) {
+			Logger.getLogger(TelefoneServiceImpl.class.getName()).log(Level.SEVERE, null, e);
 			e.printStackTrace();
 		}
 
@@ -117,6 +122,7 @@ public class TelefoneServiceImpl implements TelefoneRepository {
 			preparador.close();
 
 		} catch (SQLException e) {
+			Logger.getLogger(TelefoneServiceImpl.class.getName()).log(Level.SEVERE, null, e);
 			e.printStackTrace();
 		}
 
@@ -136,9 +142,11 @@ public class TelefoneServiceImpl implements TelefoneRepository {
 			preparador.close();
 
 		} catch (SQLException e) {
+			Logger.getLogger(TelefoneServiceImpl.class.getName()).log(Level.SEVERE, null, e);
 			e.printStackTrace();
 
 		} catch (Exception ex) {
+			Logger.getLogger(TelefoneServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
 			ex.printStackTrace();
 		}
 	}

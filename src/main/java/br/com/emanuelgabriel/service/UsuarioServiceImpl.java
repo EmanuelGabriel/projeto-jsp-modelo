@@ -42,9 +42,9 @@ public class UsuarioServiceImpl implements UsuarioRepository {
 			// fechando a conexão
 			preparador.close();
 
-		} catch (SQLException ex) {
-			Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-			ex.printStackTrace();
+		} catch (SQLException e) {
+			Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, e);
+			e.printStackTrace();
 		}
 
 	}
@@ -75,6 +75,7 @@ public class UsuarioServiceImpl implements UsuarioRepository {
 			preparador.close();
 
 		} catch (SQLException e) {
+			Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, e);
 			e.printStackTrace();
 		}
 
@@ -98,6 +99,7 @@ public class UsuarioServiceImpl implements UsuarioRepository {
 			preparador.close();
 
 		} catch (SQLException e) {
+			Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, e);
 			e.printStackTrace();
 		}
 
@@ -124,6 +126,7 @@ public class UsuarioServiceImpl implements UsuarioRepository {
 			}
 
 		} catch (SQLException e) {
+			Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, e);
 			e.printStackTrace();
 		}
 
@@ -143,6 +146,7 @@ public class UsuarioServiceImpl implements UsuarioRepository {
 			preparador.close();
 
 		} catch (SQLException e) {
+			Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, e);
 			e.printStackTrace();
 		}
 
@@ -175,6 +179,7 @@ public class UsuarioServiceImpl implements UsuarioRepository {
 			preparador.close();
 
 		} catch (Exception e) {
+			Logger.getLogger(UsuarioServiceImpl.class.getName()).log(Level.SEVERE, null, e);
 			e.printStackTrace();
 		}
 
