@@ -5,4 +5,6 @@ import br.com.emanuelgabriel.service.GenericService;
 
 public interface TelefoneRepository extends GenericService<Telefone> {
 
+	Telefone buscarPorNumero(String numero);
+
 }

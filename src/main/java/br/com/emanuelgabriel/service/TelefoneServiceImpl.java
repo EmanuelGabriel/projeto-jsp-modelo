@@ -130,6 +130,34 @@ public class TelefoneServiceImpl implements TelefoneRepository {
 	}
 
 	@Override
+	public Telefone buscarPorNumero(String numero) {
+
+		Telefone telefone = new Telefone();
+		String sql = "SELECT * FROM telefone WHERE numero = " + numero;
+
+		try {
+
+			PreparedStatement preparador = this.conexao.prepareStatement(sql);
+			ResultSet resultado = preparador.executeQuery();
+
+			while (resultado.next()) {
+				telefone.setCodigo(resultado.getLong("codigo"));
+				telefone.setCodigoUsuario(resultado.getLong("codigo"));
+				telefone.setNumero(resultado.getString("numero"));
+				telefone.setTipo(Tipo.valueOf(resultado.getString("tipo")));
+			}
+
+			preparador.close();
+
+		} catch (Exception e) {
+			Logger.getLogger(TelefoneServiceImpl.class.getName()).log(Level.SEVERE, null, e);
+			e.printStackTrace();
+		}
+
+		return telefone;
+	}
+
+	@Override
 	public void remover(Telefone telefone) {
 
 		String sql = "DELETE FROM telefone WHERE codigo = " + telefone.getCodigo();

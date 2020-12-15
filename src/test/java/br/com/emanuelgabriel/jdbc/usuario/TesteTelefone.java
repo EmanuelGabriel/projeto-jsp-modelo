@@ -19,6 +19,7 @@ public class TesteTelefone {
 	private static final String TELEFONE_USUARIO_NAO_ENCONTRADO = "Telefone para esse usuário não encontrado";
 	private static final String NENHUM_REGISTRO_ENCONTRADO = "Nenhum registro encontrado";
 	private static final String USUARIO_REGISTRO_ENCONTRADO = "Usuário não encontrado";
+	private static final String TELEFONE_NUMERO_NAO_ENCONTRADO = "Telefone não encontrado";
 
 	private UsuarioRepository usuarioRepository;
 	private TelefoneRepository telefoneRepository;
@@ -39,6 +40,20 @@ public class TesteTelefone {
 		for (TelefoneModelResponse telefone : telefones) {
 			System.out.println(telefone);
 		}
+
+	}
+
+	@Test
+	public void buscarPorNumero() {
+
+		String numero = "85398877112";
+		Telefone telefone = this.telefoneRepository.buscarPorNumero(numero);
+
+		if (telefone.getNumero() == null) {
+			throw new RegraNegocioException(TELEFONE_NUMERO_NAO_ENCONTRADO);
+		}
+
+		System.out.println(telefone);
 
 	}
 
